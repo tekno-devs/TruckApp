@@ -9,12 +9,12 @@ import { StatusBar } from 'expo-status-bar';
 export default function Home({ navigation } ) {
   return (
     <View style={styles.container}>
-        <h1> HOME PAGE </h1>
+        <Text> SEMI SLEEPER  </Text>
         <StatusBar style="auto" />
         <Button
-        title="Go to Login"
-        onPress={() => navigation.navigate('login')}
-      />
+          title="Go to Login"
+          onPress={() => navigation.navigate('login')}
+        />
     </View>
     
   )
@@ -24,7 +24,7 @@ export default function Home({ navigation } ) {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#E2DBBE',
       alignItems: 'center',
       justifyContent: 'center',
     },

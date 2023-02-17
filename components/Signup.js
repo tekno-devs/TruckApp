@@ -4,6 +4,8 @@ import { StyleSheet, Text, View , Button} from 'react-native';
 
 export default function Signup() {
   return (
-    <div>Sign up HERE</div>
+    <View>
+      <Text> SIGN UP WILL GO HERE</Text>
+    </View>
   )
 }
