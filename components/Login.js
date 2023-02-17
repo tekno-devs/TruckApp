@@ -2,14 +2,14 @@ import React, {useState} from 'react'
 import { StyleSheet, Text, View , Button, TextInput } from 'react-native';
 
 
-const [ formData, setFormData] = useState({
-  username: '',
-  password: ''
-})
+// const [ formData, setFormData] = useState({
+//   username: '',
+//   password: ''
+// })
 
-function handleChange(e){
-  setFormData({...formData, [e.target.name]: e.target.value})
-}
+// function handleChange(e){
+//   setFormData({...formData, [e.target.name]: e.target.value})
+// }
 
 export default function Login({ navigation }) {
   return (
@@ -17,7 +17,7 @@ export default function Login({ navigation }) {
       <View>
         <TextInput style={styles.inputStyle}
           placeholder='Email'
-          name= "email" 
+          //name= "email" 
           // onChangeText={handleChange}
           // value={formData.username}
         />
@@ -27,7 +27,7 @@ export default function Login({ navigation }) {
         <TextInput style={styles.inputStyle}
           secureTextEntry={true}
           placeholder='Password' 
-          name= "password"
+          //name= "password"
           // onChangeText={handleChange}
           // value={formData.password}
           />
