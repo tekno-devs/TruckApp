@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
+// this is retarded
 
 export default function Home({ navigation } ) {
   return (
