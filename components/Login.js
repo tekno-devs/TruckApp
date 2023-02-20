@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import { StyleSheet, Text, View , Button, TextInput } from 'react-native';
-
-
+import styles from '../assets/styles';
 // const [ formData, setFormData] = useState({
 //   username: '',
 //   password: ''
@@ -11,26 +10,44 @@ import { StyleSheet, Text, View , Button, TextInput } from 'react-native';
 //   setFormData({...formData, [e.target.name]: e.target.value})
 // }
 
-export default function Login({ navigation }) {
+export default function Login({route,  navigation}) {
+  // const  {onFaceId}  = route.params;
+  const [text, onChangeText] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
+
+
+  // !!!!!!!!!!! TRY TO GET THIS WAY TO WORK !!!!!!!!!!!
+
+  //   const [ formData, setFormData] = useState({
+  //     email: '',
+  //     password: ''
+  //   })
+
+  // function handleChange(e){
+  //   setFormData({...formData, [e.target.name]: e.target.value})
+  // }
+
   return (
     <View style={styles.container}>
       <View>
         <TextInput style={styles.inputStyle}
           placeholder='Email'
           //name= "email" 
-          // onChangeText={handleChange}
-          // value={formData.username}
+          onChangeText={onChangeText}
+          value={text}
         />
-
-
+        <Text>{text}</Text>
 
         <TextInput style={styles.inputStyle}
           secureTextEntry={true}
           placeholder='Password' 
+          onChangeText={onChangePassword}
           //name= "password"
           // onChangeText={handleChange}
           // value={formData.password}
           />
+          <Button title='Login' />
+          {/* <Button title="Sign in with Face ID" onPress={onFaceId} /> */}
       </View>
       {/* <Text style={textStyles.titleText}>Login Screen</Text> */}
       {/* <Button title="Go to Home" onPress={()=> navigation.navigate('Home')}/> */}
@@ -41,7 +58,7 @@ export default function Login({ navigation }) {
 
 
 
-const styles = StyleSheet.create({
+const styles1 = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#fff',

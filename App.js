@@ -2,33 +2,26 @@ import * as React from "react"
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import * as LocalAuthentication from 'expo-local-authentication'
+
+// import Home from "./components/Home";
+// import Login from "./components/Login";
+// import Signup from "./components/Signup";
+// import TabNav from './components/TabNav'
+import Tabs from "./components/TabNav";
 
 //test commit
-const Stack = createNativeStackNavigator();
+//const Stack = createNativeStackNavigator();
+//const Tab = createBottomTabNavigator();
 
 export default function App() {
+  
+
+
   return (
     <NavigationContainer>
-      <Stack.Navigator 
-        initialRouteName='Home'
-        screenOptions={{
-            headerStyle:{
-              backgroundColor: '#b2b2b2'
-            },
-            headerTintStyle: {
-               fontWeight: 'bold'
-            }
-        }}
-        >
-        <Stack.Screen name="Home" component={Home}/>
-        <Stack.Screen name="login" component={Login}/>
-        <Stack.Screen name="signup" component={Signup}/>
-      </Stack.Navigator>
-
+     <Tabs/>
     </NavigationContainer>
 
   );
