@@ -14,7 +14,10 @@ const styles = StyleSheet.create({
       paddingHorizontal: 10,
       borderRadius: 50,
       backgroundColor: "#DCDCDC"
-    }
+    },
+    title: {
+        fontSize: 32,
+      },
 });
 
 export default styles

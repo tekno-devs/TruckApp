@@ -42,6 +42,7 @@ export default function Home({ navigation } ) {
 
   return (
     <SafeAreaView style={styles.container}>
+    <Text style={styles.title}> WELCOME TO SEMI SLEEPER </Text>
     <FlatList
       data={DATA}
       renderItem={({item}) => <LotCard title={item.title} image={item.image} />}
