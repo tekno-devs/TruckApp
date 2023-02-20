@@ -1,14 +1,20 @@
-import { View, Text, StyleSheet, Image, StatusBar } from 'react-native'
+import { View, Text, StyleSheet, Image, StatusBar, Number } from 'react-native'
 import React from 'react'
 //import { StatusBar } from 'expo-status-bar';
 
- export default function LotCard({title, image}) {
+ export default function LotCard({item}) {
+
+  const {title, image, address, city, state, zip} = item
+
+
   return (
     <View style={styles1.item}>
         <Text style={styles1.title}>{title}</Text>
         <Image 
             source={image}  
         />
+        <Text> {address}</Text>
+        <Text>{city}, {state} {zip}</Text>
     </View>
   )
 }

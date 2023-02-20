@@ -11,17 +11,11 @@ import * as LocalAuthentication from 'expo-local-authentication'
 // import TabNav from './components/TabNav'
 import Tabs from "./components/TabNav";
 
-//test commit
-//const Stack = createNativeStackNavigator();
-//const Tab = createBottomTabNavigator();
 
 export default function App() {
-  
-
-
   return (
     <NavigationContainer>
-     <Tabs/>
+     <Tabs />
     </NavigationContainer>
 
   );
