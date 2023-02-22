@@ -12,6 +12,7 @@ import * as LocalAuthentication from 'expo-local-authentication'
 import Tabs from "./components/TabNav";
 
 
+
 export default function App() {
   return (
     <NavigationContainer>

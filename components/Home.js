@@ -6,7 +6,9 @@ import { StyleSheet, Text, View, Button, TextInput, SafeAreaView,
 import { StatusBar } from 'expo-status-bar';
 import styles from '../assets/styles';
 import LotCard from './LotCard';
-import Geolocation from 'react-native-geolocation-service';
+//import Geolocation from 'react-native-geolocation-service';
+import * as Location from 'expo-location';
+
 
 const DATA = [
   {
@@ -51,30 +53,28 @@ const DATA = [
 
 export default function Home({ navigation } ) {
 
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  const [location, setLocation] = useState(null);
   const [city, setCity] = useState(null);
 
   useEffect(() => {
-    const watchId = Geolocation.watchPosition(
-      position => {
-        setLatitude(position.coords.latitude);
-        setLongitude(position.coords.longitude);
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=AIzaSyCSnX4HIRkl-hrvHYwdGYn2hDOjlX8Y1-A`)
-          .then(response => response.json())
-          .then(data => {
-            const addressComponents = data.results[0].address_components;
-            const cityComponent = addressComponents.find(component => component.types.includes('locality'));
-            setCity(cityComponent.long_name);
-          })
-          .catch(error => console.log(error));
-      },
-      error => console.log(error),
-      { enableHighAccuracy: true, interval: 10000, fastestInterval: 5000 }
-    );
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        console.log('Permission to access location was denied');
+        return;
+      }
 
-    return () => Geolocation.clearWatch(watchId);
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+
+      let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coords.latitude},${location.coords.longitude}&key=AIzaSyCSnX4HIRkl-hrvHYwdGYn2hDOjlX8Y1-A`;
+      let response = await fetch(url);
+      let json = await response.json();
+      let city = json.results[0].address_components.find(component => component.types.includes('locality')).long_name;
+      setCity(city);
+    })();
   }, []);
+  //console.log(city)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -84,9 +84,13 @@ export default function Home({ navigation } ) {
 
     />
     <Text> YOUR LOCATION  </Text>
-    <Text>Latitude: {latitude}</Text>
-    <Text>Longitude: {longitude}</Text>
-    <Text> City: {city}</Text>
+    {location && (
+        <>
+          <Text>Latitude: {location.coords.latitude}</Text>
+          <Text>Longitude: {location.coords.longitude}</Text>
+          {city && <Text>City: {city}</Text>}
+        </>
+      )}
     <FlatList
       data={DATA}
       renderItem={({item}) => <LotCard item={item} />}
